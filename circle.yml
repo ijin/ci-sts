@@ -2,7 +2,7 @@ machine:
   environment:
 dependencies:
   pre:
-    #- . env.sh; xx
+      - sudo apt-get update; sudo apt-get install jq
 test:
   pre:
     - ls -alhtr ~/
@@ -11,8 +11,12 @@ test:
     - echo "test"
 deployment:
   dev:
-    branch: deploy/dev
+    branch: develop
+    commands:
+      - aws s3 ls
+  master:
+    branch: master
     commands:
       - |
-        . env.sh; xxx
+        . env.sh; aws s3 ls
 
