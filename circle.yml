@@ -1,0 +1,18 @@
+machine:
+  environment:
+dependencies:
+  pre:
+    #- . env.sh; xx
+test:
+  pre:
+    - ls -alhtr ~/
+    - env
+  override:
+    - echo "test"
+deployment:
+  dev:
+    branch: deploy/dev
+    commands:
+      - |
+        . env.sh; xxx
+
